@@ -34,11 +34,11 @@ class BotInterface():
                     '''Логика для получения данных о пользователе'''
                     self.params = self.vk_tools.get_profile_info(event.user_id)
                     self.message_send(
-                        event.user_id, f'Привет друг, {self.params["name"]}')
+                        event.user_id, f'Здравствуйте, {self.params["name"]}')
                 elif event.text.lower() == 'поиск':
                     '''Логика для поиска анкет'''
                     self.message_send(
-                        event.user_id, 'Начинаем поиск')
+                        event.user_id, 'Ищу')
                     if self.worksheets:
                         worksheet = self.worksheets.pop()
                         photos = self.vk_tools.get_photos(worksheet['id'])
@@ -50,7 +50,7 @@ class BotInterface():
                             self.params, self.offset)
 
                         worksheet = self.worksheets.pop()
-                        'првоерка анкеты в бд в соотвествие с event.user_id'
+                        '''првоерка анкеты в бд в соотвествие с event.user_id'''
 
                         photos = self.vk_tools.get_photos(worksheet['id'])
                         photo_string = ''
@@ -64,14 +64,14 @@ class BotInterface():
                         attachment=photo_string
                     )
 
-                    'добавить анкету в бд в соотвествие с event.user_id'
+                    '''добавить анкету в бд в соотвествие с event.user_id'''
 
                 elif event.text.lower() == 'пока':
                     self.message_send(
-                        event.user_id, 'До новых встреч')
+                        event.user_id, 'До встречи')
                 else:
                     self.message_send(
-                        event.user_id, 'Неизвестная команда')
+                        event.user_id, 'Я Вас не понимаю...')
 
 
 if __name__ == '__main__':
