@@ -2,15 +2,15 @@
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.utils import get_random_id
-from config import comunity_token, acces_token
+from config import comunity_token, access_token
 from core import VkTools
 
 # отправка сообщений
 class BotInterface():
-    def __init__(self, comunity_token, acces_token):
+    def __init__(self, comunity_token, access_token):
         self.vk = vk_api.VkApi(token=comunity_token)
         self.longpoll = VkLongPoll(self.vk)
-        self.vk_tools = VkTools(acces_token)
+        self.vk_tools = VkTools(access_token)
         self.params = {}
         self.worksheets = []
         self.offset = 0
@@ -68,5 +68,5 @@ class BotInterface():
                     self.message_send(
                         event.user_id, 'Я Вас не понимаю...')
 if __name__ == '__main__':
-    bot_interface = BotInterface(comunity_token, acces_token)
+    bot_interface = BotInterface(comunity_token, access_token)
     bot_interface.event_handler()
