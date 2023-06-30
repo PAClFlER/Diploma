@@ -1,15 +1,12 @@
 from pprint import pprint
 from datetime import datetime
-# импорты
+
+# импорт
 import vk_api
 from vk_api.exceptions import ApiError
-
 from config import acces_token
 
-
 # получение данных о пользователе
-
-
 class VkTools:
     def __init__(self, acces_token):
         self.vkapi = vk_api.VkApi(token=acces_token)
@@ -81,10 +78,9 @@ class VkTools:
                    'comments': item['comments']['count']
                    } for item in photos['items']
                   ]
-        '''сортировка п лайкам и комментам'''
+        
+# сортировка по лайкам и комментам
         return result[:3]
-
-
 if __name__ == '__main__':
     user_id = 789657038
     tools = VkTools(acces_token)
