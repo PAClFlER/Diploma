@@ -1,4 +1,4 @@
-# импорты
+# импорт
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.utils import get_random_id
@@ -27,11 +27,13 @@ class BotInterface():
         for event in self.longpoll.listen():
             if event.type == VkEventType.MESSAGE_NEW and event.to_me:
                 if event.text.lower() == 'привет':
+
 # получяем данных о пользователе
                     self.params = self.vk_tools.get_profile_info(event.user_id)
                     self.message_send(
                         event.user_id, f'Здравствуйте, {self.params["name"]}')
                 elif event.text.lower() == 'поиск':
+
 # ищем анкеты
                     self.message_send(
                         event.user_id, 'Ищу')
