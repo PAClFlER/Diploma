@@ -27,12 +27,12 @@ class BotInterface():
         for event in self.longpoll.listen():
             if event.type == VkEventType.MESSAGE_NEW and event.to_me:
                 if event.text.lower() == 'привет':
-                    '''Логика для получения данных о пользователе'''
+# получяем данных о пользователе
                     self.params = self.vk_tools.get_profile_info(event.user_id)
                     self.message_send(
                         event.user_id, f'Здравствуйте, {self.params["name"]}')
                 elif event.text.lower() == 'поиск':
-                    '''Логика для поиска анкет'''
+# ищем анкеты
                     self.message_send(
                         event.user_id, 'Ищу')
                     if self.worksheets:
@@ -58,7 +58,7 @@ class BotInterface():
                         attachment=photo_string
                     )
 
-# добавление анкетф в бд в соотвествии с event.user_id
+# добавление анкеты в бд по event.user_id
                 elif event.text.lower() == 'пока':
                     self.message_send(
                         event.user_id, 'До встречи')
