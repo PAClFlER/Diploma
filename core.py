@@ -4,12 +4,12 @@ from datetime import datetime
 # импорт модулей
 import vk_api
 from vk_api.exceptions import ApiError
-from config import acces_token
+from config import access_token
 
 # получаем данных о пользователе
 class VkTools:
-    def __init__(self, acces_token):
-        self.vkapi = vk_api.VkApi(token=acces_token)
+    def __init__(self, access_token):
+        self.vkapi = vk_api.VkApi(token=access_token)
 
     def _bdate_toyear(self, bdate):
         user_year = bdate.split('.')[2]
@@ -83,7 +83,7 @@ class VkTools:
         return result[:3]
 if __name__ == '__main__':
     user_id = 789657038
-    tools = VkTools(acces_token)
+    tools = VkTools(access_token)
     params = tools.get_profile_info(user_id)
     worksheets = tools.search_worksheet(params, 20)
     worksheet = worksheets.pop()
