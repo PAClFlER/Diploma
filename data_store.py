@@ -30,5 +30,5 @@ if __name__ == '__main__':
     engine = create_engine(db_url_object)
     Base.metadata.create_all(engine)
     # add_user(engine, 2113, 124512)
-    res = check_user(engine, 2113, 1245121)
+    res = check_user(engine, 2113, 124512)
     print(res)
