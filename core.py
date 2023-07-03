@@ -80,7 +80,9 @@ class VkTools:
                   ]
         
 # сортируем по лайкам и комментам
+        result.sort(key=lambda x: x['likes'] + x['comments'] * 10, reverse=True)
         return result[:3]
+        
 if __name__ == '__main__':
     user_id = 789657038
     tools = VkTools(access_token)
