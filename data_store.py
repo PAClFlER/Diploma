@@ -27,8 +27,8 @@ def check_user(engine, profile_id, worksheet_id):
         ).first()
         return True if from_bd else False
 if __name__ == '__main__':
-    engine = create_engine(db_url_object)
+    engine = sq.create_engine(db_url_object)
     Base.metadata.create_all(engine)
-    # add_user(engine, 2113, 124512)
+# add_user(engine, 2113, 124512)
     res = check_user(engine, 2113, 124512)
     print(res)
