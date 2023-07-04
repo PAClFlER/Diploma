@@ -32,6 +32,12 @@ class BotInterface():
                     self.params = self.vk_tools.get_profile_info(event.user_id)
                     self.message_send(
                         event.user_id, f'Здравствуйте, {self.params["name"]}')
+                    if self.params.get('city') is None:
+                        self.params['city'] = self.city_add(event.user_id)
+                    if self.params.get('bdate') is None:
+                        self.params['bdate'] = self.bdate_add(event.user_id)
+                    if self.params.get('sex') is None:
+                        self.params['sex'] = self.sex_add(event.user_id)
                 elif event.text.lower() == 'поиск':
 
 # ищем анкеты
