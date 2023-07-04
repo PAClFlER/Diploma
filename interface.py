@@ -26,9 +26,8 @@ class BotInterface():
     def event_handler(self):
         for event in self.longpoll.listen():
             if event.type == VkEventType.MESSAGE_NEW and event.to_me:
-                if event.text.lower() == 'привет':
-
 # получяем данных о пользователе
+                if event.text.lower() == 'привет':
                     self.params = self.vk_tools.get_profile_info(event.user_id)
                     self.message_send(
                         event.user_id, f'Здравствуйте, {self.params["name"]}')
@@ -38,9 +37,8 @@ class BotInterface():
                         self.params['bdate'] = self.bdate_add(event.user_id)
                     if self.params.get('sex') is None:
                         self.params['sex'] = self.sex_add(event.user_id)
+# ищем анкеты                
                 elif event.text.lower() == 'поиск':
-
-# ищем анкеты
                     self.message_send(
                         event.user_id, 'Ищу')
                     if self.worksheets:
