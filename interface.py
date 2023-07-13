@@ -35,8 +35,20 @@ class BotInterface():
                         self.params['city'] = self.city_add(event.user_id)
                     if self.params.get('bdate') is None:
                         self.params['bdate'] = self.bdate_add(event.user_id)
-                    if self.params.get('sex') is None:
-                        self.params['sex'] = self.sex_add(event.user_id)
+    def city_add(self, user_id):
+        self.message_send(user_id,
+                          'Введите название Вашего города и затем наберите команду "поиск"')
+        for event in self.longpoll.listen():
+            if event.type == VkEventType.MESSAGE_NEW and event.to_me:
+                return event.text
+
+    def bdate_add(self, user_id):
+        self.message_send(user_id,
+                          'Введите дату Вашего рождения в формате день.месяц.год '
+                          'и затем наберите команду "поиск"')
+        for event in self.longpoll.listen():
+            if event.type == VkEventType.MESSAGE_NEW and event.to_me:
+                return event.text
 # ищем анкеты                
                 elif event.text.lower() == 'поиск':
                     self.message_send(
