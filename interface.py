@@ -49,6 +49,17 @@ class BotInterface():
         for event in self.longpoll.listen():
             if event.type == VkEventType.MESSAGE_NEW and event.to_me:
                 return event.text
+                
+    def get_profile(self, worksheets, event):
+        while True:
+            if worksheets:
+                worksheet = worksheets.pop()
+                if not check_user(engine, event.user_id, worksheet['id']):
+                    add_user(engine, event.user_id, worksheet['id'])
+                    yield worksheet
+            else:
+                worksheets = self.vk_tools.search_worksheet(
+                    self.params, self.offset)
 # ищем анкеты                
                 elif event.text.lower() == 'поиск':
                     self.message_send(
