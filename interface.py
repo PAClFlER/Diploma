@@ -4,6 +4,7 @@ from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.utils import get_random_id
 from config import comunity_token, access_token
 from core import VkTools
+from data_store import check_user, add_user, engine
 
 # отправка сообщений
 class BotInterface():
